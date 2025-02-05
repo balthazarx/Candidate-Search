@@ -1,21 +1,32 @@
-import { Link } from 'react-router-dom';
+// src/components/Nav.tsx
+import { Link, useLocation } from 'react-router-dom';
 
 const Nav = () => {
-  // TODO: Add necessary code to display the navigation bar and link between the pages
+  const location = useLocation();
+  
   return (
-    <ul>
-      <li>
-        <Link to='/'>
-        Search
-        </Link>
-      </li>
-      <li>
-        <Link to='/SavedCandidates'>
-        Potential Candidates
-        </Link>
-      </li>
-    </ul>
-  )
+    <nav className="navbar">
+      <div className="nav-container">
+        <div className="nav-brand">
+          <h1>Candidate Search Application</h1>
+        </div>
+        <div className="nav-links">
+          <Link 
+            to="/" 
+            className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
+          >
+            Home
+          </Link>
+          <Link 
+            to="/SavedCandidates" 
+            className={`nav-link ${location.pathname === '/SavedCandidates' ? 'active' : ''}`}
+          >
+            Potential Candidates
+          </Link>
+        </div>
+      </div>
+    </nav>
+  );
 };
 
 export default Nav;
